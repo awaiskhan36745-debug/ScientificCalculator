@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calc_background"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Display Card -->
+    <LinearLayout
+        android:id="@+id/displayContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/display_bg"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/keypadGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="0.35">
+
+        <!-- Top Toolbar inside Display -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDegRad"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingHorizontal="12dp"
+                android:text="DEG"
+                android:textColor="@color/calc_btn_scientific_text"
+                android:textSize="12sp"
+                app:cornerRadius="8dp"
+                app:strokeColor="#2A3550" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/btnHistory"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="History"
+                android:padding="6dp"
+                android:src="@android:drawable/ic_menu_recent_history"
+                app:tint="@color/calc_text_secondary" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Expression Preview -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <TextView
+                android:id="@+id/tvExpression"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text=""
+                android:textColor="@color/calc_text_secondary"
+                android:textSize="20sp"
+                android:maxLines="1" />
+        </HorizontalScrollView>
+
+        <!-- Main Result -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <TextView
+                android:id="@+id/tvResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="0"
+                android:textColor="@color/calc_text_primary"
+                android:textSize="44sp"
+                android:textStyle="bold"
+                android:maxLines="1" />
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Keypad Grid (Scientific + Standard) -->
+    <GridLayout
+        android:id="@+id/keypadGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:columnCount="5"
+        android:rowCount="7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayContainer"
+        app:layout_constraintVertical_weight="0.65">
+
+        <!-- Row 0: Scientific functions -->
+        <Button
+            android:id="@+id/btnSin"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="sin"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnCos"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="cos"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnTan"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="tan"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnLog"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="log"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnLn"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="ln"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <!-- Row 1: Scientific functions 2 -->
+        <Button
+            android:id="@+id/btnSqrt"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="√"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnPower"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="x^y"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnPi"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="π"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnE"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="e"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnFact"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="n!"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <!-- Row 2: Parentheses, AC, DEL, ÷ -->
+        <Button
+            android:id="@+id/btnOpenBracket"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="("
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnCloseBracket"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text=")"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnAc"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_action_bg"
+            android:text="AC"
+            android:textColor="#EF4444"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnDel"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_action_bg"
+            android:text="⌫"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnDivide"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_operator_bg"
+            android:text="÷"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <!-- Row 3: 7, 8, 9, × -->
+        <Button
+            android:id="@+id/btn7"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="7"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn8"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="8"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn9"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="9"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMultiply"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_operator_bg"
+            android:text="×"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnAns"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="Ans"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <!-- Row 4: 4, 5, 6, - -->
+        <Button
+            android:id="@+id/btn4"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="4"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn5"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="5"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn6"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="6"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMinus"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_operator_bg"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPercent"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="%"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="16sp" />
+
+        <!-- Row 5: 1, 2, 3, + -->
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="1"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="2"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="3"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPlus"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_operator_bg"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnAbs"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_scientific_bg"
+            android:text="|x|"
+            android:textAllCaps="false"
+            android:textColor="@color/calc_btn_scientific_text"
+            android:textSize="14sp" />
+
+        <!-- Row 6: 0, ., =, spare -->
+        <Button
+            android:id="@+id/btn0"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="2"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="0"
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnDot"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_number_bg"
+            android:text="."
+            android:textColor="@color/calc_text_primary"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnEquals"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="2"
+            android:layout_rowWeight="1"
+            android:layout_margin="3dp"
+            android:background="@drawable/btn_equals_bg"
+            android:text="="
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

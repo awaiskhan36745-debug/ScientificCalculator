@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ScientificCalculator" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/calc_btn_operator</item>
+        <item name="colorSecondary">@color/calc_accent</item>
+        <item name="android:windowBackground">@color/calc_background</item>
+        <item name="android:statusBarColor">@color/calc_background</item>
+        <item name="android:navigationBarColor">@color/calc_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.ScientificCalculator" parent="Base.Theme.ScientificCalculator" />
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Dark Theme Palette -->
+    <color name="calc_background">#0F1117</color>
+    <color name="calc_display_bg">#181B25</color>
+    <color name="calc_card_bg">#1E222E</color>
+
+    <color name="calc_btn_number">#242938</color>
+    <color name="calc_btn_number_pressed">#2F364A</color>
+
+    <color name="calc_btn_scientific">#1A233A</color>
+    <color name="calc_btn_scientific_text">#38BDF8</color>
+
+    <color name="calc_btn_operator">#6366F1</color>
+    <color name="calc_btn_operator_pressed">#4F46E5</color>
+
+    <color name="calc_btn_equals">#10B981</color>
+    <color name="calc_btn_equals_pressed">#059669</color>
+
+    <color name="calc_btn_action">#334155</color>
+    <color name="calc_text_primary">#F8FAFC</color>
+    <color name="calc_text_secondary">#94A3B8</color>
+    <color name="calc_accent">#8B5CF6</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
